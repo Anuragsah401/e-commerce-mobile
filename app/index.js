@@ -13,25 +13,36 @@ import {
 } from "../components";
 
 const Home = () => {
+
+  const handlePress = () => {
+    console.log("Btn pressed")
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
         options={{
           headerStyle: {backgroundColor: COLORS.lightWhite},
           headerShadowVisible: false,
-          headerLeft: () => {
-            <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />;
-          },
-          headerRight: () => {
-            <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />;
-          },
+          headerLeft: () => (
+            <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" handlePress={handlePress}/>
+          ),
+          headerRight: () => (
+            <ScreenHeaderBtn iconUrl={images.profile} dimension="60%" />
+          ),
           headerTitle: "",
         }}
       />
 
-      <View>
-        <Text>Hello</Text>
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+
+        <View style={{flex:1, padding:SIZES.medium}}>
+          <Welcome />
+          <Nearbyjobs />
+          <Popularjobs />
+        </View>
+
+      </ScrollView>
     </SafeAreaView>
   );
 };
